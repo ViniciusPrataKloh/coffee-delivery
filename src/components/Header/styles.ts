@@ -26,15 +26,30 @@ export const LocationContainer = styled.div`
     color: ${(props) => props.theme['purple-500']};
 `
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.button`
     display: flex;
     align-items: center;
     padding: 0.625rem 0.625rem;
     border-radius: 8px;
 
     background-color: ${(props) => props.theme['yellow-100']};
+
+    button::hover{
+        background: ${(props) => props.theme['yellow-300']};
+    }
     
     a{
         color: ${(props) => props.theme['yellow-500']}
     }
+`
+
+export const Counter = styled.span`
+    border-radius: 100%;
+    padding: 4px 8px;
+
+    margin-left: -26px;
+    margin-top: -48px;
+
+    background: ${(props) => props.theme['yellow-500']};
+    color: ${(props) => props.theme['yellow-100']};
 `
