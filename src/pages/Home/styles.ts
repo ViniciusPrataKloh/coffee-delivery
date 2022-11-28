@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
     margin-top: 5.875rem;
     margin-bottom: 1.875rem;
     gap: 3.5rem;
-    margin: 5.875rem auto;
+    margin: 32px auto;
 
     h1{
         font-size: xx-large;
@@ -47,12 +47,6 @@ export const MainContainer = styled.main`
     margin-top: 2rem;
     gap: 3.375rem;
 `
-
-export const CardContainer = styled.div`
-    display: grid;
-    grid-template-columns: 4;
-`
-
 const BACKGROUND_ICON_COLOR = {
     yellow: 'yellow-300',
     yellow_dark: 'yellow-500',
@@ -74,4 +68,13 @@ export const IconCircle = styled.span<IconCircleProps>`
 
     background-color: ${(props) => props.theme[BACKGROUND_ICON_COLOR[props.iconColor]]};
     color: ${(props) => props.theme['white']};
+`
+
+
+export const CardContainer = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    row-gap: 40px;
+    column-gap: 32px;
+    margin-bottom: 157px;
 `

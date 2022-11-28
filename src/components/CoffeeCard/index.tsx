@@ -1,39 +1,40 @@
-import { ShoppingCartSimple } from 'phosphor-react'
+import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import coffee from '../../assets/coffee.png'
-import { CardContainer } from './styles'
+import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
 
 
-export function CoffeCard() {
+export function CoffeeCard() {
     return (
         <CardContainer>
-            <div>
-                <div>
-                    <img src={coffee} alt="" />
-                    <div>
-                        <span>TRADICIONAL</span>
-                        <span>COM LEITE</span>
-                    </div>
+            <Header>
+                <img src={coffee} alt="" />
+                <TagContainer>
+                    <Tag>TRADICIONAL</Tag>
+                    <Tag>COM LEITE</Tag>
+                </TagContainer>
+            </Header>
 
-                    <div>
-                        <strong>Expresso Tradicional</strong>
-                        <span>O tradicional café feito com água quente e leite</span>
-                    </div>
 
-                    <div>
-                        <span>R$<strong>9,90</strong></span>
+            <CoffeeTitle>
+                <strong>Expresso Tradicional</strong>
+                <span>O tradicional café feito <br />com água quente e leite</span>
+            </CoffeeTitle>
 
-                        <div>
-                            <span>-</span>
-                            <span>1</span>
-                            <span>+</span>
-                        </div>
+            <FooterContainer>
+                <span>R$<strong>9,90</strong></span>
 
-                        <span>
-                            <ShoppingCartSimple />
-                        </span>
-                    </div>
-                </div>
-            </div>
+                <FormCart>
+                    <Quantity>
+                        <button><Minus size={12} /></button>
+                        <span>1</span>
+                        <button><Plus size={12} /></button>
+                    </Quantity>
+
+                    <CartButton type='submit'>
+                        <ShoppingCartSimple size={14} />
+                    </CartButton>
+                </FormCart>
+            </FooterContainer>
         </CardContainer>
     )
 }

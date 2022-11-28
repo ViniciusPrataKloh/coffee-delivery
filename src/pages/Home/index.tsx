@@ -1,7 +1,7 @@
-import { ShoppingCart, Timer, Package, Coffee, ShoppingCartSimple } from 'phosphor-react'
-import { CardContainer, Header, HeaderContainer, IconCircle, MainContainer, MarketingItem, MarketingList } from './styles'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import coffeeDelivery from '../../assets/coffee-delivery.png'
-import { CoffeCard } from '../../components/CoffeeCard'
+import { CoffeeCard } from '../../components/CoffeeCard'
+import { CardContainer, Header, HeaderContainer, IconCircle, MainContainer, MarketingItem, MarketingList } from './styles'
 
 export function Home() {
     return (
@@ -54,10 +54,15 @@ export function Home() {
                 </h2>
 
                 <CardContainer>
-                    <CoffeCard />
-                    <CoffeCard />
-                    <CoffeCard />
-                    <CoffeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
                 </CardContainer>
             </MainContainer>
 
