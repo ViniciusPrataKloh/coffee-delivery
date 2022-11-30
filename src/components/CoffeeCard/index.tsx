@@ -21,7 +21,7 @@ export function CoffeeCard() {
             </CoffeeTitle>
 
             <FooterContainer>
-                <span>R$<strong>9,90</strong></span>
+                <span>R$ <strong>9,90</strong></span>
 
                 <FormCart>
                     <Quantity>
