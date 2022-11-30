@@ -1,6 +1,6 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, Minus, Money, Plus } from 'phosphor-react'
-import coffee from '../../assets/coffee.png'
-import { CheckoutContainer, LocationCard, PaymentCard, Quantity, RightCard } from './styles'
+import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import { SelectedCoffeeCard } from '../../components/SelectedCoffeeCard'
+import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
 export function Checkout() {
     return (
@@ -59,20 +59,8 @@ export function Checkout() {
                 <h3>Cafés Selecionados</h3>
 
                 <RightCard>
-                    <div>
-                        <img src={coffee} alt="" />
-                        <div>
-                            <div>
-                                <span>Expresso Tradicional</span>
-                                <span>R$ 9,90</span>
-                            </div>
-                            <Quantity>
-                                <button><Minus size={12} /></button>
-                                <span>1</span>
-                                <button><Plus size={12} /></button>
-                            </Quantity>
-                        </div>
-                    </div>
+                    <SelectedCoffeeCard />
+                    <SelectedCoffeeCard />
 
                     <div>
                         <div>
