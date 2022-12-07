@@ -1,4 +1,5 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import { CurrencyDollar, MapPin } from 'phosphor-react'
+import { PaymentTypeCard } from '../../components/PaymentTypeCard'
 import { SelectedCoffeeCard } from '../../components/SelectedCoffeeCard'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
@@ -10,19 +11,20 @@ export function Checkout() {
 
                 <LocationCard>
                     <header>
-                        <MapPin />
+                        <MapPin size={22} color='#DBAC2C' />
                         <div>
                             <span>Endereço de Entrega</span>
                             <span>Informe o endereço onde deseja receber o pedido</span>
                         </div>
                     </header>
-                    <form >
+
+                    <form>
                         <input type="text" name="input-pac" id="input-pac" placeholder="CEP" />
                         <input type="text" name="input-road" id="input-road" placeholder="Rua" />
                         <div>
                             <input type="text" name="input-number" id="input-number" placeholder="Número" />
                             <input type="text" name="input-complement" id="input-complement" placeholder="Complemento" />
-                            <input type="text" name="input-optional" id="input-optional" placeholder="Opcional" />
+                            {/* <input type="text" name="input-optional" id="input-optional" placeholder="Opcional" /> */}
                         </div>
                         <div>
                             <input type="text" name="input-district" id="input-district" placeholder="Bairro" />
@@ -34,23 +36,17 @@ export function Checkout() {
 
                 <PaymentCard>
                     <header>
-                        <CurrencyDollar />
-                        <span>Pagamento</span>
-                        <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
+                        <CurrencyDollar size={22} color='#8047F8' />
+                        <div>
+                            <span>Pagamento</span>
+                            <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
+                        </div>
                     </header>
-                    <div>
-                        <div>
-                            <CreditCard />
-                            <span>Cartão de Crédito</span>
-                        </div>
-                        <div>
-                            <Bank />
-                            <span>Cartão de Débito</span>
-                        </div>
-                        <div>
-                            <Money />
-                            <span>Dinheiro</span>
-                        </div>
+
+                    <div className="paymentMethod">
+                        <PaymentTypeCard iconType='credit-card' name='Cartão de Crédito' />
+                        <PaymentTypeCard iconType='bank' name='Cartão de Débito' />
+                        <PaymentTypeCard iconType='money' name='Dinheiro' />
                     </div>
                 </PaymentCard>
             </div>
@@ -62,7 +58,7 @@ export function Checkout() {
                     <SelectedCoffeeCard />
                     <SelectedCoffeeCard />
 
-                    <div>
+                    <div className='total'>
                         <div>
                             <span>Total de ítens</span>
                             <span>R$ 9,90</span>
