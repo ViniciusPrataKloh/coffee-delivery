@@ -15,24 +15,41 @@ import irlandes from '../../assets/irlandes.png'
 import latte from '../../assets/latte.png'
 import macchiato from '../../assets/macchiato.png'
 import mochaccino from '../../assets/mochaccino.png'
+import { useState } from 'react'
 
 interface CoffeeCardProps {
+    id: string;
     title: string;
     subtitle: string;
     tags: string[];
     price: number;
     imageUrl: string;
+
+    handleSetSelectedCoffee: (id: string, quantity: number) => void;
 }
 
-enum CoffeeImage {
+export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl, handleSetSelectedCoffee }: CoffeeCardProps) {
 
-}
+    const [quantity, setQuantity] = useState(0);
 
-export function CoffeeCard({ title, subtitle, tags, price, imageUrl }: CoffeeCardProps) {
+    function handleAddOneQuantity() {
+        setQuantity(quantity + 1);
+    }
+
+    function handleRemoveOneQuantity() {
+        if (quantity !== 0) {
+            setQuantity(quantity - 1);
+        }
+    }
+
+    function handleAddCoffeeToCart() {
+        handleSetSelectedCoffee(id, quantity);
+    }
+
     return (
         <CardContainer>
             <Header>
-                <img src={americano} alt="" />
+                <img src={macchiato} alt="" />
                 <TagContainer>
                     {tags.map(tag => {
                         return (
@@ -49,16 +66,16 @@ export function CoffeeCard({ title, subtitle, tags, price, imageUrl }: CoffeeCar
             </CoffeeTitle>
 
             <FooterContainer>
-                <span>R$ <strong>{price / 100}</strong></span>
+                <span>R$ <strong>{price}</strong></span>
 
                 <FormCart>
                     <Quantity>
-                        <button><Minus size={12} /></button>
-                        <span>1</span>
-                        <button><Plus size={12} /></button>
+                        <button><Minus size={12} onClick={handleRemoveOneQuantity} /></button>
+                        <span>{quantity}</span>
+                        <button><Plus size={12} onClick={handleAddOneQuantity} /></button>
                     </Quantity>
 
-                    <CartButton type='submit'>
+                    <CartButton onClick={handleAddCoffeeToCart}>
                         <ShoppingCartSimple size={14} />
                     </CartButton>
                 </FormCart>

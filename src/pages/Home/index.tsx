@@ -4,6 +4,7 @@ import { CoffeeCard } from '../../components/CoffeeCard'
 import { CardContainer, Header, HeaderContainer, IconCircle, MainContainer, MarketingItem, MarketingList } from './styles'
 
 import coffeeList from '../../coffee.seed.json'
+import { useState } from 'react'
 
 interface Coffee {
     id: string;
@@ -14,10 +15,23 @@ interface Coffee {
     imageUrl: string;
 }
 
-export function Home() {
 
+
+export function Home() {
     const coffees: Coffee[] = coffeeList.coffees;
-    console.log(coffeeList);
+
+
+
+    function handleSetSelectedCoffee(coffeeId: string, quantity: number) {
+        const selectedCoffee: selectedCoffee = Object.assign({
+            coffeeId,
+            quantity
+        });
+
+        setSelectedCoffee(state => [...state, selectedCoffee]);
+    }
+
+    console.log(selectedCoffees);
 
     return (
         <>
@@ -72,11 +86,13 @@ export function Home() {
                     {coffees.map(coffee => {
                         return (
                             <CoffeeCard key={coffee.id}
+                                id={coffee.id}
                                 title={coffee.title}
                                 subtitle={coffee.subtitle}
                                 tags={coffee.tags}
                                 price={coffee.price}
                                 imageUrl={coffee.imageUrl}
+                                handleSetSelectedCoffee={handleSetSelectedCoffee}
                             />
                         )
                     })}
