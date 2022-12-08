@@ -3,7 +3,22 @@ import coffeeDelivery from '../../assets/coffee-delivery.png'
 import { CoffeeCard } from '../../components/CoffeeCard'
 import { CardContainer, Header, HeaderContainer, IconCircle, MainContainer, MarketingItem, MarketingList } from './styles'
 
+import coffeeList from '../../coffee.seed.json'
+
+interface Coffee {
+    id: string;
+    title: string;
+    subtitle: string;
+    tags: string[];
+    price: number;
+    imageUrl: string;
+}
+
 export function Home() {
+
+    const coffees: Coffee[] = coffeeList.coffees;
+    console.log(coffeeList);
+
     return (
         <>
             <HeaderContainer>
@@ -54,15 +69,17 @@ export function Home() {
                 </h2>
 
                 <CardContainer>
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
-
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
+                    {coffees.map(coffee => {
+                        return (
+                            <CoffeeCard key={coffee.id}
+                                title={coffee.title}
+                                subtitle={coffee.subtitle}
+                                tags={coffee.tags}
+                                price={coffee.price}
+                                imageUrl={coffee.imageUrl}
+                            />
+                        )
+                    })}
                 </CardContainer>
             </MainContainer>
 

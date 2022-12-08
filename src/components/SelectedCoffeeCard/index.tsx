@@ -1,5 +1,5 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
-import coffee from '../../assets/coffee.png';
+import coffee from '../../assets/arabe.png';
 import { Quantity } from '../CoffeeCard/styles';
 import { SelectedCoffeeCardContainer } from './styled';
 
