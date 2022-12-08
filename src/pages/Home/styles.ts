@@ -52,7 +52,6 @@ const BACKGROUND_ICON_COLOR = {
     yellow_dark: 'yellow-500',
     gray: 'gray-700',
     purple: 'purple-300'
-
 }
 
 interface IconCircleProps {
