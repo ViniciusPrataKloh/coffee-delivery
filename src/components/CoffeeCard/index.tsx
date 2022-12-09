@@ -1,21 +1,9 @@
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
 
-import americano from '../../assets/americano.png'
-import arabe from '../../assets/arabe.png'
-import cafe_com_leite from '../../assets/cafe-com-leite.png'
-import cafe_gelado from '../../assets/cafe-gelado.png'
-import capuccino from '../../assets/capuccino.png'
-import chocolate_quente from '../../assets/chocolate-quente.png'
-import cubano from '../../assets/cubano.png'
-import expresso_cremoso from '../../assets/expresso-cremoso.png'
-import expresso from '../../assets/expresso.png'
-import havaiano from '../../assets/havaiano.png'
-import irlandes from '../../assets/irlandes.png'
-import latte from '../../assets/latte.png'
+import { useContext, useState } from 'react'
 import macchiato from '../../assets/macchiato.png'
-import mochaccino from '../../assets/mochaccino.png'
-import { useState } from 'react'
+import { CartContext } from '../../context/CartCoffeeProvider'
 
 interface CoffeeCardProps {
     id: string;
@@ -24,11 +12,11 @@ interface CoffeeCardProps {
     tags: string[];
     price: number;
     imageUrl: string;
-
-    handleSetSelectedCoffee: (id: string, quantity: number) => void;
 }
 
-export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl, handleSetSelectedCoffee }: CoffeeCardProps) {
+export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: CoffeeCardProps) {
+
+    const { selectedCoffees, handleSetSelectedCoffee } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(0);
 
