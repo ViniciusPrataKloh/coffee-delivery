@@ -1,21 +1,13 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useContext } from 'react'
 import coffeeDelivery from '../../assets/coffee-delivery.png'
 import { CoffeeCard } from '../../components/CoffeeCard'
+import { CartContext } from '../../context/CartCoffeeProvider'
 import { CardContainer, Header, HeaderContainer, IconCircle, MainContainer, MarketingItem, MarketingList } from './styles'
 
-import coffeeList from '../../coffee.seed.json'
-
-interface Coffee {
-    id: string;
-    title: string;
-    subtitle: string;
-    tags: string[];
-    price: number;
-    imageUrl: string;
-}
 
 export function Home() {
-    const coffees: Coffee[] = coffeeList.coffees;
+    const { coffees } = useContext(CartContext);
 
     return (
         <>

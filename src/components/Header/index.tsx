@@ -1,9 +1,13 @@
-import { MapPin, ShoppingCart } from 'phosphor-react'
-import { NavLink } from 'react-router-dom'
-import logo from '../../assets/logo.png'
-import { CartContainer, Counter, HeaderContainer, LocationContainer } from './styles'
+import { MapPin, ShoppingCart } from 'phosphor-react';
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import { CartContext } from '../../context/CartCoffeeProvider';
+import { CartContainer, Counter, HeaderContainer, LocationContainer } from './styles';
 
 export function Header() {
+    const { totalCoffeesInCart } = useContext(CartContext);
+
     return (
         <HeaderContainer>
             <img src={logo} alt="Logo do Coffee Delivery" />
@@ -19,7 +23,7 @@ export function Header() {
                         <ShoppingCart size={24} />
                     </NavLink>
                 </CartContainer>
-                <Counter>0</Counter>
+                <Counter>{totalCoffeesInCart}</Counter>
             </nav>
 
         </HeaderContainer>

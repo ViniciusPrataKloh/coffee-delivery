@@ -1,9 +1,8 @@
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
-import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
-
 import { useContext, useState } from 'react'
 import macchiato from '../../assets/macchiato.png'
 import { CartContext } from '../../context/CartCoffeeProvider'
+import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
 
 interface CoffeeCardProps {
     id: string;
@@ -16,7 +15,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: CoffeeCardProps) {
 
-    const { selectedCoffees, handleSetSelectedCoffee } = useContext(CartContext);
+    const { handleSetSelectedCoffee } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(0);
 
@@ -32,7 +31,10 @@ export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: Coffe
 
     function handleAddCoffeeToCart() {
         handleSetSelectedCoffee(id, quantity);
+        setQuantity(0);
     }
+
+    const isButtonDisabled = (quantity > 0) ? false : true;
 
     return (
         <CardContainer>
@@ -63,7 +65,7 @@ export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: Coffe
                         <button><Plus size={12} onClick={handleAddOneQuantity} /></button>
                     </Quantity>
 
-                    <CartButton onClick={handleAddCoffeeToCart}>
+                    <CartButton disabled={isButtonDisabled} onClick={handleAddCoffeeToCart}>
                         <ShoppingCartSimple size={14} />
                     </CartButton>
                 </FormCart>

@@ -1,9 +1,21 @@
 import { CurrencyDollar, MapPin } from 'phosphor-react'
+import { useContext } from 'react'
 import { PaymentTypeCard } from '../../components/PaymentTypeCard'
 import { SelectedCoffeeCard } from '../../components/SelectedCoffeeCard'
+import { CartContext } from '../../context/CartCoffeeProvider'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
 export function Checkout() {
+    const { selectedCoffees } = useContext(CartContext);
+
+    let priceAmount = selectedCoffees.map(item => {
+        return item.coffee.price * item.quantity;
+    });
+
+    function getPriceAmount() {
+
+    }
+
     return (
         <CheckoutContainer>
             <div>
@@ -55,13 +67,22 @@ export function Checkout() {
                 <h3>Cafés Selecionados</h3>
 
                 <RightCard>
-                    <SelectedCoffeeCard />
-                    <SelectedCoffeeCard />
+                    {selectedCoffees.map((item) => {
+                        return (
+                            <SelectedCoffeeCard
+                                key={item.coffee.id}
+                                id={item.coffee.id}
+                                title={item.coffee.title}
+                                quantity={item.quantity}
+                                price={item.coffee.price}
+                            />
+                        )
+                    })}
 
                     <div className='total'>
                         <div>
                             <span>Total de ítens</span>
-                            <span>R$ 9,90</span>
+                            <span>R$ {priceAmount}</span>
                         </div>
                         <div>
                             <span>Entrega</span>
