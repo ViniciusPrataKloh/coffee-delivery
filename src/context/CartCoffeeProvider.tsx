@@ -27,10 +27,7 @@ interface ICartContext {
     handleRemoveCoffeeToCart: (coffeeIdToRemove: string) => void;
 }
 
-
-
 export const CartContext = createContext({} as ICartContext);
-
 
 export function CartCoffeeContextProvider({ children }: CartCoffeeContextProviderProps) {
     const [selectedCoffees, setSelectedCoffees] = useState<selectedCoffee[]>([]);

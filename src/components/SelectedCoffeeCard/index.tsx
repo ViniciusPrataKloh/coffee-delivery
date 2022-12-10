@@ -13,25 +13,25 @@ interface SelectedCoffeeCardProps {
 }
 
 export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffeeCardProps) {
-    const [cartQuantity, setCartQuantity] = useState(quantity);
+    const [itemQuantity, setItemQuantity] = useState(quantity);
 
     const { handleRemoveCoffeeToCart } = useContext(CartContext);
 
-    const priceAmount = price * quantity;
-
     function handleAddOneQuantity() {
-        setCartQuantity(cartQuantity + 1);
+        setItemQuantity(itemQuantity + 1);
     }
 
     function handleRemoveOneQuantity() {
-        if (cartQuantity !== 0) {
-            setCartQuantity(cartQuantity - 1);
+        if (itemQuantity !== 0) {
+            setItemQuantity(itemQuantity - 1);
         }
     }
 
     function onRemoveCoffee() {
         handleRemoveCoffeeToCart(id);
     }
+
+    const priceAmount = itemQuantity * price;
 
     return (
         <SelectedCoffeeCardContainer>
@@ -42,7 +42,7 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
                     <div className='buttons'>
                         <Quantity>
                             <button><Minus size={12} onClick={handleRemoveOneQuantity} /></button>
-                            <span>{cartQuantity}</span>
+                            <span>{itemQuantity}</span>
                             <button><Plus size={12} onClick={handleAddOneQuantity} /></button>
                         </Quantity>
                         <button className='remove-button' onClick={onRemoveCoffee}>
