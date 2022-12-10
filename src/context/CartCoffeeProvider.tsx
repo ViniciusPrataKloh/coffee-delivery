@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useReducer, useState } from 'react';
 import coffeeList from '../coffee.seed.json';
 
 interface Coffee {
@@ -20,37 +20,87 @@ interface CartCoffeeContextProviderProps {
 }
 
 interface ICartContext {
+    cartState: selectedCoffee[];
     coffees: Coffee[];
     selectedCoffees: selectedCoffee[];
     totalCoffeesInCart: number;
-    handleSetSelectedCoffee: (coffeeId: string, quantity: number) => void;
-    handleRemoveCoffeeToCart: (coffeeIdToRemove: string) => void;
+    setSelectedCoffee: (coffeeId: string, quantity: number) => void;
+    removeCoffeeToCart: (coffeeIdToRemove: string) => void;
+    changeQuantityOfItem: (coffeeId: string, quantity: number) => void;
 }
 
 export const CartContext = createContext({} as ICartContext);
 
 export function CartCoffeeContextProvider({ children }: CartCoffeeContextProviderProps) {
+    const coffees: Coffee[] = coffeeList.coffees;
+
+    const [cartState, dispatch] = useReducer((state: selectedCoffee[], action: any) => {
+        if (action.type == 'ADD_NEW_COFFEE') {
+            const selectedCoffee: selectedCoffee = Object.assign({
+                coffee: getSelectedCoffeeById(action.payload.coffeeId),
+                quantity: action.payload.quantity
+            });
+            return [...state, selectedCoffee];
+        }
+
+        if (action.type === 'REMOVE_COFFEE') {
+            const newState = state.filter(item => {
+                return item.coffee.id !== action.payload.coffeeId;
+            });
+
+            return newState;
+        }
+
+        if (action.type === 'CHANGE_QUANTITY') {
+            return state.map(item => {
+                if (item.coffee.id === action.payload.coffeeId) {
+                    const updateCoffee: selectedCoffee = Object.assign({
+                        coffee: getSelectedCoffeeById(action.payload.coffeeId),
+                        quantity: action.payload.quantity
+                    });
+                    console.log(updateCoffee)
+                    return updateCoffee;
+                } else {
+                    return item;
+                }
+            });
+        }
+
+        return state;
+    }, []);
+
     const [selectedCoffees, setSelectedCoffees] = useState<selectedCoffee[]>([]);
     // const [quantity, setQuantity] = useState(0);
 
-    const coffees: Coffee[] = coffeeList.coffees;
-    const totalCoffeesInCart = selectedCoffees.length;
+    const totalCoffeesInCart = cartState.length;
 
-    function handleSetSelectedCoffee(coffeeId: string, quantity: number) {
-        const selectedCoffee: selectedCoffee = Object.assign({
-            coffee: getSelectedCoffeeById(coffeeId),
-            quantity
+    function setSelectedCoffee(coffeeId: string, quantity: number) {
+        dispatch({
+            type: 'ADD_NEW_COFFEE',
+            payload: {
+                coffeeId,
+                quantity
+            }
         });
-
-        setSelectedCoffees(state => [...state, selectedCoffee]);
     }
 
-    function handleRemoveCoffeeToCart(coffeeIdToRemove: string) {
-        const newSelectedCoffees = selectedCoffees.filter(item => {
-            return item.coffee.id !== coffeeIdToRemove;
+    function removeCoffeeToCart(coffeeIdToRemove: string) {
+        dispatch({
+            type: 'REMOVE_COFFEE',
+            payload: {
+                coffeeId: coffeeIdToRemove
+            }
         });
+    }
 
-        setSelectedCoffees(newSelectedCoffees);
+    function changeQuantityOfItem(coffeeId: string, quantity: number) {
+        dispatch({
+            type: 'CHANGE_QUANTITY',
+            payload: {
+                coffeeId,
+                quantity
+            }
+        });
     }
 
     function getSelectedCoffeeById(coffeeId: string): Coffee | undefined {
@@ -58,15 +108,17 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
         return coffee;
     }
 
+    console.log(cartState);
 
-    console.log(selectedCoffees);
     return (
         <CartContext.Provider value={{
+            cartState,
             coffees,
             selectedCoffees,
             totalCoffeesInCart,
-            handleSetSelectedCoffee,
-            handleRemoveCoffeeToCart
+            setSelectedCoffee,
+            removeCoffeeToCart,
+            changeQuantityOfItem
         }}>
             {children}
         </CartContext.Provider>

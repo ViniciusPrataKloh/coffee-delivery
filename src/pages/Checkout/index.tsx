@@ -6,9 +6,9 @@ import { CartContext } from '../../context/CartCoffeeProvider'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
 export function Checkout() {
-    const { selectedCoffees } = useContext(CartContext);
+    const { cartState } = useContext(CartContext);
 
-    let priceAmount = selectedCoffees.map(item => {
+    let priceAmount = cartState.map(item => {
         return item.coffee.price * item.quantity;
     });
 
@@ -67,7 +67,7 @@ export function Checkout() {
                 <h3>Cafés Selecionados</h3>
 
                 <RightCard>
-                    {selectedCoffees.map((item) => {
+                    {cartState.map((item) => {
                         return (
                             <SelectedCoffeeCard
                                 key={item.coffee.id}

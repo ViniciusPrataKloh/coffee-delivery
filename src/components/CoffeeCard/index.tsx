@@ -15,7 +15,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: CoffeeCardProps) {
 
-    const { handleSetSelectedCoffee } = useContext(CartContext);
+    const { setSelectedCoffee } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(0);
 
@@ -30,9 +30,11 @@ export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: Coffe
     }
 
     function handleAddCoffeeToCart() {
-        handleSetSelectedCoffee(id, quantity);
+        setSelectedCoffee(id, quantity);
         setQuantity(0);
     }
+
+    // changeQuantityOfItem(id, quantity);
 
     const isButtonDisabled = (quantity > 0) ? false : true;
 

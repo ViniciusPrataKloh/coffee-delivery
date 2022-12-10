@@ -1,5 +1,5 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import coffee from '../../assets/arabe.png';
 import { CartContext } from '../../context/CartCoffeeProvider';
 import { Quantity } from '../CoffeeCard/styles';
@@ -15,21 +15,25 @@ interface SelectedCoffeeCardProps {
 export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffeeCardProps) {
     const [itemQuantity, setItemQuantity] = useState(quantity);
 
-    const { handleRemoveCoffeeToCart } = useContext(CartContext);
+    const { changeQuantityOfItem, removeCoffeeToCart } = useContext(CartContext);
 
     function handleAddOneQuantity() {
         setItemQuantity(itemQuantity + 1);
     }
 
     function handleRemoveOneQuantity() {
-        if (itemQuantity !== 0) {
+        if (itemQuantity !== 1) {
             setItemQuantity(itemQuantity - 1);
         }
     }
 
-    function onRemoveCoffee() {
-        handleRemoveCoffeeToCart(id);
+    function handleRemoveCoffee() {
+        removeCoffeeToCart(id);
     }
+
+    useEffect(() => {
+        changeQuantityOfItem(id, itemQuantity);
+    }, [itemQuantity]);
 
     const priceAmount = itemQuantity * price;
 
@@ -45,7 +49,7 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
                             <span>{itemQuantity}</span>
                             <button><Plus size={12} onClick={handleAddOneQuantity} /></button>
                         </Quantity>
-                        <button className='remove-button' onClick={onRemoveCoffee}>
+                        <button className='remove-button' onClick={handleRemoveCoffee}>
                             <Trash color='#8047F8' />
                             Remover
                         </button>
