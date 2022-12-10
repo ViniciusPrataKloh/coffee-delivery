@@ -55,7 +55,7 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
                         </button>
                     </div>
                 </div>
-                <span>R$ {priceAmount}</span>
+                <span>R$ {priceAmount / 100}</span>
             </div>
         </SelectedCoffeeCardContainer>
     )

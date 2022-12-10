@@ -8,12 +8,16 @@ import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './style
 export function Checkout() {
     const { cartState } = useContext(CartContext);
 
-    let priceAmount = cartState.map(item => {
-        return item.coffee.price * item.quantity;
-    });
+    const priceAmount: number = getPriceAmount();
+    const priceTotal: number = priceAmount + 3.50;
 
     function getPriceAmount() {
+        let priceAmount = 0;
+        cartState.forEach(item => {
+            priceAmount += (item.coffee.price * item.quantity);
+        });
 
+        return priceAmount;
     }
 
     return (
@@ -82,7 +86,7 @@ export function Checkout() {
                     <div className='total'>
                         <div>
                             <span>Total de ítens</span>
-                            <span>R$ {priceAmount}</span>
+                            <span>R$ {priceAmount / 100}</span>
                         </div>
                         <div>
                             <span>Entrega</span>
@@ -90,7 +94,7 @@ export function Checkout() {
                         </div>
                         <div>
                             <strong>Total</strong>
-                            <strong>R$ 13,40</strong>
+                            <strong>R$ {priceTotal / 100}</strong>
                         </div>
 
                         <button>Confirmar</button>
