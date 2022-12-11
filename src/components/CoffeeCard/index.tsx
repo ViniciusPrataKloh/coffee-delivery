@@ -15,7 +15,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: CoffeeCardProps) {
 
-    const { setSelectedCoffee } = useContext(CartContext);
+    const { insertItemToCart } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(0);
 
@@ -30,7 +30,7 @@ export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: Coffe
     }
 
     function handleAddCoffeeToCart() {
-        setSelectedCoffee(id, quantity);
+        insertItemToCart(id, quantity);
         setQuantity(0);
     }
 

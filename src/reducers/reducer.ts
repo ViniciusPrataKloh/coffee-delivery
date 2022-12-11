@@ -1,6 +1,7 @@
 import { selectedCoffee } from "../context/CartCoffeeProvider";
+import { ActionTypesProps } from "./actions";
 
-export function CartStateReducer(state: selectedCoffee[], action: any) {
+export function CartStateReducer(state: selectedCoffee[], action: ActionTypesProps) {
     if (action.type == 'ADD_NEW_COFFEE') {
         const selectedCoffee: selectedCoffee = Object.assign({
             coffee: action.payload.coffee,

@@ -6,14 +6,14 @@ import { CartContext } from '../../context/CartCoffeeProvider'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
 export function Checkout() {
-    const { cartState } = useContext(CartContext);
+    const { cartItemsState } = useContext(CartContext);
 
     const priceAmount: number = getPriceAmount();
     const priceTotal: number = priceAmount + 3.50;
 
     function getPriceAmount() {
         let priceAmount = 0;
-        cartState.forEach(item => {
+        cartItemsState.forEach(item => {
             priceAmount += (item.coffee.price * item.quantity);
         });
 
@@ -71,7 +71,7 @@ export function Checkout() {
                 <h3>Cafés Selecionados</h3>
 
                 <RightCard>
-                    {cartState.map((item) => {
+                    {cartItemsState.map((item) => {
                         return (
                             <SelectedCoffeeCard
                                 key={item.coffee.id}

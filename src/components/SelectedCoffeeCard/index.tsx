@@ -15,7 +15,7 @@ interface SelectedCoffeeCardProps {
 export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffeeCardProps) {
     const [itemQuantity, setItemQuantity] = useState(quantity);
 
-    const { changeQuantityOfItem, removeCoffeeToCart } = useContext(CartContext);
+    const { changeQuantityOfItem, removerItemToCart } = useContext(CartContext);
 
     function handleAddOneQuantity() {
         setItemQuantity(itemQuantity + 1);
@@ -28,7 +28,7 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
     }
 
     function handleRemoveCoffee() {
-        removeCoffeeToCart(id);
+        removerItemToCart(id);
     }
 
     useEffect(() => {

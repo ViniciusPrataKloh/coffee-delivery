@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer, useState } from 'react';
+import { createContext, ReactNode, useReducer } from 'react';
 import coffeeList from '../coffee.seed.json';
 import { addNewCoffeeAction, changeCoffeeQuantityAction, removeCoffeeAction } from '../reducers/actions';
 import { CartStateReducer } from '../reducers/reducer';
@@ -12,7 +12,7 @@ export interface Coffee {
     imageUrl: string;
 }
 
-export interface selectedCoffee {
+export interface cartItem {
     coffee: Coffee;
     quantity: number;
 }
@@ -22,12 +22,11 @@ interface CartCoffeeContextProviderProps {
 }
 
 interface ICartContext {
-    cartState: selectedCoffee[];
+    cartItemsState: cartItem[];
     coffees: Coffee[];
-    selectedCoffees: selectedCoffee[];
     totalCoffeesInCart: number;
-    setSelectedCoffee: (coffeeId: string, quantity: number) => void;
-    removeCoffeeToCart: (coffeeIdToRemove: string) => void;
+    insertItemToCart: (coffeeId: string, quantity: number) => void;
+    removerItemToCart: (coffeeIdToRemove: string) => void;
     changeQuantityOfItem: (coffeeId: string, quantity: number) => void;
 }
 
@@ -36,19 +35,16 @@ export const CartContext = createContext({} as ICartContext);
 export function CartCoffeeContextProvider({ children }: CartCoffeeContextProviderProps) {
     const coffees: Coffee[] = coffeeList.coffees;
 
-    const [cartState, dispatch] = useReducer(CartStateReducer, []);
+    const [cartItemsState, dispatch] = useReducer(CartStateReducer, []);
 
-    const [selectedCoffees, setSelectedCoffees] = useState<selectedCoffee[]>([]);
-    // const [quantity, setQuantity] = useState(0);
+    const totalCoffeesInCart = cartItemsState.length;
 
-    const totalCoffeesInCart = cartState.length;
-
-    function setSelectedCoffee(coffeeId: string, quantity: number) {
+    function insertItemToCart(coffeeId: string, quantity: number) {
         const coffee: Coffee = getSelectedCoffeeById(coffeeId);
         dispatch(addNewCoffeeAction(coffee, quantity))
     }
 
-    function removeCoffeeToCart(coffeeIdToRemove: string) {
+    function removerItemToCart(coffeeIdToRemove: string) {
         dispatch(removeCoffeeAction(coffeeIdToRemove));
     }
 
@@ -62,16 +58,15 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
         return coffee!;
     }
 
-    console.log(cartState);
+    console.log(cartItemsState);
 
     return (
         <CartContext.Provider value={{
-            cartState,
+            cartItemsState,
             coffees,
-            selectedCoffees,
             totalCoffeesInCart,
-            setSelectedCoffee,
-            removeCoffeeToCart,
+            insertItemToCart,
+            removerItemToCart,
             changeQuantityOfItem
         }}>
             {children}
