@@ -1,9 +1,8 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
-import coffee from '../../assets/arabe.png';
-import { CartContext } from '../../context/CartCoffeeProvider';
-import { Quantity } from '../CoffeeCard/styles';
-import { SelectedCoffeeCardContainer } from './styled';
+import coffee from '../../../assets/arabe.png';
+import { CartContext } from '../../../context/CartCoffeeProvider';
+import { Quantity, SelectedCoffeeCardContainer } from './styled';
 
 interface SelectedCoffeeCardProps {
     id: string;

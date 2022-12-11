@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { useContext, useState } from 'react'
-import macchiato from '../../assets/macchiato.png'
-import { CartContext } from '../../context/CartCoffeeProvider'
+import macchiato from '../../../assets/macchiato.png'
+import { CartContext } from '../../../context/CartCoffeeProvider'
 import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
 
 interface CoffeeCardProps {

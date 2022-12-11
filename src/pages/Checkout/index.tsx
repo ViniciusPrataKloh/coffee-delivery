@@ -1,8 +1,8 @@
 import { CurrencyDollar, MapPin } from 'phosphor-react'
 import { useContext } from 'react'
-import { PaymentTypeCard } from '../../components/PaymentTypeCard'
-import { SelectedCoffeeCard } from '../../components/SelectedCoffeeCard'
 import { CartContext } from '../../context/CartCoffeeProvider'
+import { PaymentTypeCard } from './PaymentTypeCard'
+import { SelectedCoffeeCard } from './SelectedCoffeeCard'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
 
 export function Checkout() {

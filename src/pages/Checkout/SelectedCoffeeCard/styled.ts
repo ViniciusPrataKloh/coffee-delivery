@@ -54,3 +54,24 @@ export const SelectedCoffeeCardContainer = styled.div`
         }
     }
 `
+
+export const Quantity = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 8px;
+    padding: 8px 12px;
+    
+    background-color: ${(props) => props.theme['gray-300']};
+
+    button{
+        color: ${(props) => props.theme['purple-300']};
+        background-color: ${(props) => props.theme['gray-300']};
+    
+        &::hover{
+            color: ${(props) => props.theme['purple-500']};
+        }
+    }
+`
