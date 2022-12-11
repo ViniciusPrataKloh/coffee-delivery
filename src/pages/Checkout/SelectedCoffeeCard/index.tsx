@@ -2,6 +2,7 @@ import { Minus, Plus, Trash } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
 import coffee from '../../../assets/arabe.png';
 import { CartContext } from '../../../context/CartCoffeeProvider';
+import { formatPrice } from '../../../utils/formatPrice';
 import { Quantity, SelectedCoffeeCardContainer } from './styled';
 
 interface SelectedCoffeeCardProps {
@@ -34,7 +35,8 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
         changeQuantityOfItem(id, itemQuantity);
     }, [itemQuantity]);
 
-    const priceAmount = itemQuantity * price;
+
+    let priceAmount = formatPrice((itemQuantity * price) / 100);
 
     return (
         <SelectedCoffeeCardContainer>
@@ -54,7 +56,7 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
                         </button>
                     </div>
                 </div>
-                <span>R$ {priceAmount / 100}</span>
+                <span>R$ {priceAmount}</span>
             </div>
         </SelectedCoffeeCardContainer>
     )

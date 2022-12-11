@@ -1,6 +1,7 @@
 import { CurrencyDollar, MapPin } from 'phosphor-react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartCoffeeProvider'
+import { formatPrice } from '../../utils/formatPrice'
 import { PaymentTypeCard } from './PaymentTypeCard'
 import { SelectedCoffeeCard } from './SelectedCoffeeCard'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
@@ -8,10 +9,11 @@ import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './style
 export function Checkout() {
     const { cartItemsState } = useContext(CartContext);
 
-    const priceAmount: number = getPriceAmount();
-    const priceTotal: number = priceAmount + 3.50;
+    const deliveryFee = 350;
+    const priceAmount = getPriceAmount();
+    const totalAmount = priceAmount + deliveryFee;
 
-    function getPriceAmount() {
+    function getPriceAmount(): number {
         let priceAmount = 0;
         cartItemsState.forEach(item => {
             priceAmount += (item.coffee.price * item.quantity);
@@ -19,6 +21,9 @@ export function Checkout() {
 
         return priceAmount;
     }
+
+    const formattedPriceAmount = formatPrice(priceAmount / 100);
+    const formattedTotalAmount = formatPrice(totalAmount / 100);
 
     return (
         <CheckoutContainer>
@@ -86,7 +91,7 @@ export function Checkout() {
                     <div className='total'>
                         <div>
                             <span>Total de ítens</span>
-                            <span>R$ {priceAmount / 100}</span>
+                            <span>R$ {formattedPriceAmount}</span>
                         </div>
                         <div>
                             <span>Entrega</span>
@@ -94,7 +99,7 @@ export function Checkout() {
                         </div>
                         <div>
                             <strong>Total</strong>
-                            <strong>R$ {priceTotal / 100}</strong>
+                            <strong>R$ {formattedTotalAmount}</strong>
                         </div>
 
                         <button>Confirmar</button>
