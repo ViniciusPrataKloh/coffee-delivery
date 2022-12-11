@@ -11,7 +11,7 @@ export function CartStateReducer(state: selectedCoffee[], action: any) {
 
     if (action.type === 'REMOVE_COFFEE') {
         const newState = state.filter(item => {
-            return item.coffee.id !== action.payload.coffee.id;
+            return item.coffee.id !== action.payload.coffeeId;
         });
 
         return newState;
@@ -24,7 +24,6 @@ export function CartStateReducer(state: selectedCoffee[], action: any) {
                     coffee: action.payload.coffee,
                     quantity: action.payload.quantity
                 });
-                console.log(updateCoffee)
                 return updateCoffee;
             } else {
                 return item;

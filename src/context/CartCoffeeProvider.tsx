@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useReducer, useState } from 'react';
 import coffeeList from '../coffee.seed.json';
+import { addNewCoffeeAction, changeCoffeeQuantityAction, removeCoffeeAction } from '../reducers/actions';
 import { CartStateReducer } from '../reducers/reducer';
 
 export interface Coffee {
@@ -43,37 +44,22 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
     const totalCoffeesInCart = cartState.length;
 
     function setSelectedCoffee(coffeeId: string, quantity: number) {
-        dispatch({
-            type: 'ADD_NEW_COFFEE',
-            payload: {
-                coffee: getSelectedCoffeeById(coffeeId),
-                quantity
-            }
-        });
+        const coffee: Coffee = getSelectedCoffeeById(coffeeId);
+        dispatch(addNewCoffeeAction(coffee, quantity))
     }
 
     function removeCoffeeToCart(coffeeIdToRemove: string) {
-        dispatch({
-            type: 'REMOVE_COFFEE',
-            payload: {
-                coffee: getSelectedCoffeeById(coffeeIdToRemove),
-            }
-        });
+        dispatch(removeCoffeeAction(coffeeIdToRemove));
     }
 
     function changeQuantityOfItem(coffeeId: string, quantity: number) {
-        dispatch({
-            type: 'CHANGE_QUANTITY',
-            payload: {
-                coffee: getSelectedCoffeeById(coffeeId),
-                quantity
-            }
-        });
+        const coffee: Coffee = getSelectedCoffeeById(coffeeId);
+        dispatch(changeCoffeeQuantityAction(coffee, quantity))
     }
 
-    function getSelectedCoffeeById(coffeeId: string): Coffee | undefined {
+    function getSelectedCoffeeById(coffeeId: string): Coffee {
         const coffee = coffees.find(coffee => coffee.id === coffeeId);
-        return coffee;
+        return coffee!;
     }
 
     console.log(cartState);
