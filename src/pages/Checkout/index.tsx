@@ -2,6 +2,7 @@ import { CurrencyDollar, MapPin } from 'phosphor-react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartCoffeeProvider'
 import { formatPrice } from '../../utils/formatPrice'
+import { LocationForm } from './LocationForm'
 import { PaymentTypeCard } from './PaymentTypeCard'
 import { SelectedCoffeeCard } from './SelectedCoffeeCard'
 import { CheckoutContainer, LocationCard, PaymentCard, RightCard } from './styles'
@@ -39,20 +40,7 @@ export function Checkout() {
                         </div>
                     </header>
 
-                    <form>
-                        <input type="text" name="input-pac" id="input-pac" placeholder="CEP" />
-                        <input type="text" name="input-road" id="input-road" placeholder="Rua" />
-                        <div>
-                            <input type="text" name="input-number" id="input-number" placeholder="Número" />
-                            <input type="text" name="input-complement" id="input-complement" placeholder="Complemento" />
-                            {/* <input type="text" name="input-optional" id="input-optional" placeholder="Opcional" /> */}
-                        </div>
-                        <div>
-                            <input type="text" name="input-district" id="input-district" placeholder="Bairro" />
-                            <input type="text" name="input-city" id="input-city" placeholder="Cidade" />
-                            <input type="text" name="input-fu" id="input-fu" placeholder="UF" />
-                        </div>
-                    </form>
+                    <LocationForm />
                 </LocationCard>
 
                 <PaymentCard>

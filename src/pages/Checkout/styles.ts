@@ -35,65 +35,6 @@ export const LocationCard = styled(BaseLeftCard)`
             gap: 2px;
         }
     }
-
-    form{
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        input{
-            padding: 12px 12px;
-            background-color: ${(props) => props.theme['gray-200']};
-            color: ${(props) => props.theme['gray-700']};
-            border-radius: 6px;
-
-            &:focus{
-                border: 1px solid ${(props) => props.theme['yellow-300']};
-            }
-        }
-
-        input::placeholder{
-            color: ${(props) => props.theme['gray-600']};
-        }
-
-        input[name="input-pac"]{
-            width: 200px;
-        }
-
-        input[name="input-number"]{
-            width: 200px;
-        }
-
-        input[name="input-complement"]{
-            width: 348px;
-            margin-left: 12px;
-        }
-
-        div:fist-child{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        input[name="input-district"]{
-            width: 200px;
-        }
-
-        input[name="input-city"]{
-            width: 276px;
-            margin-left: 12px;
-            margin-right: 12px;
-        }
-
-        input[name="input-fu"]{
-            width: 60px;
-        } 
-
-        div:last-child{
-            display: flex;
-            flex-direction: row;
-        }
-    }
 `
 
 export const PaymentCard = styled(BaseLeftCard)`
