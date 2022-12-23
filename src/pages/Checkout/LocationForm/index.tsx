@@ -22,7 +22,15 @@ export function LocationForm() {
         resolver: zodResolver(newFormValidationSchema),
     });
 
-    const { updatePac } = useContext(FormContext);
+    const {
+        updatePac,
+        updateRoad,
+        updateNumber,
+        updateComplement,
+        updateDistrict,
+        updateCity,
+        updateFu
+    } = useContext(FormContext);
 
     const pac = watch('pac');
     const road = watch('road');
@@ -33,6 +41,12 @@ export function LocationForm() {
     const fu = watch('uf');
 
     updatePac(pac);
+    updateRoad(road);
+    updateNumber(number);
+    updateComplement(complement);
+    updateDistrict(district);
+    updateCity(city);
+    updateFu(fu);
 
     return (
         <Form>

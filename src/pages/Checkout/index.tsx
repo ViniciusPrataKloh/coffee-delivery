@@ -90,7 +90,9 @@ export function Checkout() {
                             <strong>R$ {formattedTotalAmount}</strong>
                         </div>
 
-                        <button>Confirmar</button>
+                        <a href='/success'>
+                            <button>Confirmar</button>
+                        </a>
                     </div>
                 </RightCard>
             </div>

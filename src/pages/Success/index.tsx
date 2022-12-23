@@ -1,8 +1,13 @@
-import { CurrencyDollar, MapPin, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
 import illustration from '../../assets/illustration.png'
+import { FormContext } from '../../context/FormLocationContextProvider'
 import { Box, GradientBorder, IconCircle, InformationCard, InformationContainer, Item, Wrapper } from './styles'
 
 export function Success() {
+    const { location, number } = useContext(FormContext);
+    console.log(location);
+
     return (
         <Wrapper>
             <InformationContainer>
@@ -23,8 +28,8 @@ export function Success() {
                                 <MapPin />
                             </IconCircle>
                             <div>
-                                <span>Entrega em <strong>Rua São João Daniel Martinelli, 102</strong></span>
-                                <span>Farrapos - Porto Alegre, RS</span>
+                                <span>Entrega em <strong>{location.road}, {number}</strong></span>
+                                <span>{location.city} - {location.district}, {location.fu}</span>
                             </div>
                         </Item>
                         <Item>
