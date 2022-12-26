@@ -1,6 +1,6 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
-import coffee from '../../../assets/arabe.png';
+import { CoffeeImage } from '../../../components/CoffeeImage';
 import { CartContext } from '../../../context/CartCoffeeProvider';
 import { formatPrice } from '../../../utils/formatPrice';
 import { Quantity, SelectedCoffeeCardContainer } from './styled';
@@ -40,7 +40,8 @@ export function SelectedCoffeeCard({ id, title, quantity, price }: SelectedCoffe
 
     return (
         <SelectedCoffeeCardContainer>
-            <img className='coffee-image' src={coffee} alt="" />
+            <CoffeeImage type={id} />
+
             <div className='container'>
                 <div className='left-card'>
                     <span>{title}</span>

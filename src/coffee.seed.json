@@ -39,7 +39,7 @@
                 "GELADO"
             ],
             "price": 990,
-            "imageUrl": "../../assets/expresso-cremoso.png"
+            "imageUrl": "../../assets/cafe-gelado.png"
         },
         {
             "id": "coffee5",
@@ -87,14 +87,14 @@
         },
         {
             "id": "coffee9",
-            "title": "Mocaccino",
+            "title": "Mochacchino",
             "subtitle": "Café expresso com calda de chocolate, pouco leite e espuma",
             "tags": [
                 "TRADICIONAL",
                 "COM LEITE"
             ],
             "price": 990,
-            "imageUrl": "../../assets/mocaccino.png"
+            "imageUrl": "../../assets/mochaccino.png"
         },
         {
             "id": "coffee10",
