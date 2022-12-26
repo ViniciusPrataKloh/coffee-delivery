@@ -1,12 +1,15 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import illustration from '../../assets/illustration.png'
+import { CartContext } from '../../context/CartCoffeeProvider'
 import { FormContext } from '../../context/FormLocationContextProvider'
 import { Box, GradientBorder, IconCircle, InformationCard, InformationContainer, Item, Wrapper } from './styles'
 
 export function Success() {
     const { location, number } = useContext(FormContext);
-    console.log(location);
+    const { clearCart } = useContext(CartContext);
+
+    // clearCart();
 
     return (
         <Wrapper>
@@ -29,7 +32,7 @@ export function Success() {
                             </IconCircle>
                             <div>
                                 <span>Entrega em <strong>{location.road}, {number}</strong></span>
-                                <span>{location.city} - {location.district}, {location.fu}</span>
+                                <span>{location.district} - {location.city}, {location.fu}</span>
                             </div>
                         </Item>
                         <Item>

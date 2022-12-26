@@ -2,7 +2,6 @@ import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react';
 import { useContext, useState } from 'react';
 import { CoffeeImage } from '../../../components/CoffeeImage';
 import { CartContext } from '../../../context/CartCoffeeProvider';
-import { getCoffeeTypeByTitle } from '../../../utils/coffeeTypes';
 import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles';
 
 interface CoffeeCardProps {
@@ -36,7 +35,6 @@ export function CoffeeCard({ id, title, subtitle, tags, price }: CoffeeCardProps
     }
 
     const isButtonDisabled = (quantity > 0) ? false : true;
-    const coffeeType = getCoffeeTypeByTitle(title);
 
     return (
         <CardContainer>

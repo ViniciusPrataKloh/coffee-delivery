@@ -38,7 +38,7 @@ export function LocationForm() {
     const complement = watch('complement');
     const district = watch('district');
     const city = watch('city');
-    const fu = watch('uf');
+    const fu = watch('fu');
 
     updatePac(pac);
     updateRoad(road);
