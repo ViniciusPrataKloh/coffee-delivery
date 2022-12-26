@@ -32,5 +32,9 @@ export function CartStateReducer(state: selectedCoffee[], action: ActionTypesPro
         });
     }
 
+    if (action.type === 'CLEAR_CART') {
+        return [];
+    }
+
     return state;
 }

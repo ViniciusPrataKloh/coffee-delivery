@@ -7,12 +7,15 @@ export enum ActionTypes {
     REMOVE_COFFEE = 'REMOVE_COFFEE',
     // eslint-disable-next-line no-unused-vars
     CHANGE_QUANTITY = 'CHANGE_QUANTITY',
+    // eslint-disable-next-line no-unused-vars
+    CLEAR_CART = 'CLEAR_CART'
 }
 
 export type ActionTypesProps =
     | { type: ActionTypes.ADD_NEW_COFFEE; payload: { coffee: Coffee, quantity: number } }
     | { type: ActionTypes.REMOVE_COFFEE; payload: { coffeeId: string } }
     | { type: ActionTypes.CHANGE_QUANTITY; payload: { coffee: Coffee, quantity: number } }
+    | { type: ActionTypes.CLEAR_CART; }
 
 export function addNewCoffeeAction(coffee: Coffee, quantity: number): ActionTypesProps {
     return {
@@ -40,5 +43,11 @@ export function changeCoffeeQuantityAction(coffee: Coffee, quantity: number): Ac
             coffee,
             quantity
         }
+    }
+}
+
+export function clearCartAction(): ActionTypesProps {
+    return {
+        type: ActionTypes.CLEAR_CART
     }
 }

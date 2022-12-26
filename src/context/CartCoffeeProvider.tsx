@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useReducer } from 'react';
 import coffeeList from '../coffee.seed.json';
-import { addNewCoffeeAction, changeCoffeeQuantityAction, removeCoffeeAction } from '../reducers/actions';
+import { addNewCoffeeAction, changeCoffeeQuantityAction, clearCartAction, removeCoffeeAction } from '../reducers/actions';
 import { CartStateReducer } from '../reducers/reducer';
 
 export interface Coffee {
@@ -28,6 +28,7 @@ interface ICartContext {
     insertItemToCart: (coffeeId: string, quantity: number) => void;
     removerItemToCart: (coffeeIdToRemove: string) => void;
     changeQuantityOfItem: (coffeeId: string, quantity: number) => void;
+    clearCart: () => void;
 }
 
 export const CartContext = createContext({} as ICartContext);
@@ -58,6 +59,10 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
         return coffee!;
     }
 
+    function clearCart() {
+        dispatch(clearCartAction());
+    }
+
     console.log(cartItemsState);
 
     return (
@@ -67,7 +72,8 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
             totalCoffeesInCart,
             insertItemToCart,
             removerItemToCart,
-            changeQuantityOfItem
+            changeQuantityOfItem,
+            clearCart
         }}>
             {children}
         </CartContext.Provider>
