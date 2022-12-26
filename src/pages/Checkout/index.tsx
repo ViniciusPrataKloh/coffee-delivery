@@ -1,5 +1,6 @@
 import { CurrencyDollar, MapPin } from 'phosphor-react'
 import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { CartContext } from '../../context/CartCoffeeProvider'
 import { formatPrice } from '../../utils/formatPrice'
 import { LocationForm } from './LocationForm'
@@ -90,9 +91,9 @@ export function Checkout() {
                             <strong>R$ {formattedTotalAmount}</strong>
                         </div>
 
-                        <a href='/success'>
+                        <NavLink to="/success">
                             <button>Confirmar</button>
-                        </a>
+                        </NavLink>
                     </div>
                 </RightCard>
             </div>

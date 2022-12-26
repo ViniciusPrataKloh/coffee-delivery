@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { CartContext } from '../../context/CartCoffeeProvider';
+import { FormContext } from '../../context/FormLocationContextProvider';
 import { CartContainer, Counter, HeaderContainer, LocationContainer } from './styles';
 
 export function Header() {
     const { totalCoffeesInCart } = useContext(CartContext);
+    const { city, fu } = useContext(FormContext);
 
     return (
         <HeaderContainer>
@@ -15,7 +17,7 @@ export function Header() {
             <nav>
                 <LocationContainer>
                     <MapPin size={24} />
-                    <span>Porto Alegre, RS</span>
+                    <span>{city}, {fu}</span>
                 </LocationContainer>
 
                 <CartContainer>

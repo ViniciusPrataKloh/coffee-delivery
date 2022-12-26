@@ -1,8 +1,8 @@
-import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
-import { useContext, useState } from 'react'
-import macchiato from '../../../assets/macchiato.png'
-import { CartContext } from '../../../context/CartCoffeeProvider'
-import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles'
+import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../../context/CartCoffeeProvider';
+import { CoffeeImage } from '../CoffeeImage';
+import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles';
 
 interface CoffeeCardProps {
     id: string;
@@ -34,18 +34,17 @@ export function CoffeeCard({ id, title, subtitle, tags, price, imageUrl }: Coffe
         setQuantity(0);
     }
 
-    // changeQuantityOfItem(id, quantity);
-
     const isButtonDisabled = (quantity > 0) ? false : true;
 
     return (
         <CardContainer>
             <Header>
-                <img src={macchiato} alt="" />
+                <CoffeeImage type={title} />
+
                 <TagContainer>
                     {tags.map(tag => {
                         return (
-                            <Tag>{tag}</Tag>
+                            <Tag key={tag}>{tag}</Tag>
                         )
                     })}
                 </TagContainer>
