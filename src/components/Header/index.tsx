@@ -9,15 +9,20 @@ import { CartContainer, Counter, HeaderContainer, LocationContainer } from './st
 export function Header() {
     const { totalCoffeesInCart } = useContext(CartContext);
     const { city, fu } = useContext(FormContext);
+    console.log(city)
+
+    const isLocationEmpty = (city === '' || fu === '') ? true : false;
 
     return (
         <HeaderContainer>
             <img src={logo} alt="Logo do Coffee Delivery" />
 
             <nav>
+
+
                 <LocationContainer>
                     <MapPin size={24} />
-                    <span>{city}, {fu}</span>
+                    <span>{!isLocationEmpty ? city + ', ' + fu : ''}</span>
                 </LocationContainer>
 
                 <CartContainer>
