@@ -2,7 +2,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
-import { CartContext } from '../../context/CartCoffeeProvider';
+import { CartContext } from '../../context/CartCoffeeContextProvider';
 import { FormContext } from '../../context/FormLocationContextProvider';
 import { CartContainer, Counter, HeaderContainer, LocationContainer } from './styles';
 
@@ -15,18 +15,23 @@ export function Header() {
 
     return (
         <HeaderContainer>
-            <img src={logo} alt="Logo do Coffee Delivery" />
+            <NavLink to="/" title="Voltar à página inicial">
+                <img src={logo} alt="Logo do Coffee Delivery" />
+            </NavLink>
 
             <nav>
 
-
-                <LocationContainer>
-                    <MapPin size={24} />
-                    <span>{!isLocationEmpty ? city + ', ' + fu : ''}</span>
-                </LocationContainer>
+                {
+                    !isLocationEmpty
+                        ? <LocationContainer>
+                            <MapPin size={24} />
+                            <span>{city}, {fu}</span>
+                        </LocationContainer>
+                        : <></>
+                }
 
                 <CartContainer>
-                    <NavLink to="/checkout" title="Carrinho">
+                    <NavLink to="/checkout" title="Ir para o arrinho">
                         <ShoppingCart size={24} />
                     </NavLink>
                 </CartContainer>

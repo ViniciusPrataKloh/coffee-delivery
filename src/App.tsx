@@ -1,8 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { Router } from './components/Router'
-import { CartCoffeeContextProvider } from './context/CartCoffeeProvider'
+import { CartCoffeeContextProvider } from './context/CartCoffeeContextProvider'
 import { FormLocationContextProvider } from './context/FormLocationContextProvider'
+import { PaymentContextProvider } from './context/PaymentContextProvider'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
@@ -12,7 +13,9 @@ function App() {
             <BrowserRouter>
                 <CartCoffeeContextProvider>
                     <FormLocationContextProvider>
-                        <Router />
+                        <PaymentContextProvider>
+                            <Router />
+                        </PaymentContextProvider>
                     </FormLocationContextProvider>
                 </CartCoffeeContextProvider>
             </BrowserRouter>

@@ -50,17 +50,17 @@ export function LocationForm() {
 
     return (
         <Form>
-            <input type="text" id="input-pac" placeholder="CEP" required pattern="\d{5}-?\d{3}" {...register('pac')} />
-            <input type="text" id="input-road" placeholder="Rua" {...register('road')} />
+            <input type="text" required id="input-pac" placeholder="CEP" pattern="\d{5}-?\d{3}" {...register('pac')} />
+            <input type="text" required id="input-road" placeholder="Rua" {...register('road')} />
             <div>
-                <input type="text" id="input-number" placeholder="Número" {...register('number')} />
+                <input type="text" required id="input-number" placeholder="Número" {...register('number')} />
                 <input type="text" id="input-complement" placeholder="Complemento" {...register('complement')} />
                 {/* <input type="text" name="input-optional" id="input-optional" placeholder="Opcional" /> */}
             </div>
             <div>
-                <input type="text" id="input-district" placeholder="Bairro" {...register('district')} />
-                <input type="text" id="input-city" placeholder="Cidade" {...register('city')} />
-                <input type="text" id="input-fu" placeholder="UF" {...register('fu')} />
+                <input type="text" required id="input-district" placeholder="Bairro" {...register('district')} />
+                <input type="text" required id="input-city" placeholder="Cidade" {...register('city')} />
+                <input type="text" required id="input-fu" placeholder="UF" {...register('fu')} />
             </div>
         </Form>
     );

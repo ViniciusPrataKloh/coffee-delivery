@@ -1,7 +1,8 @@
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react';
 import { useContext, useState } from 'react';
 import { CoffeeImage } from '../../../components/CoffeeImage';
-import { CartContext } from '../../../context/CartCoffeeProvider';
+import { CartContext } from '../../../context/CartCoffeeContextProvider';
+import { formatPrice } from '../../../utils/formatPrice';
 import { CardContainer, CartButton, CoffeeTitle, FooterContainer, FormCart, Header, Quantity, Tag, TagContainer } from './styles';
 
 interface CoffeeCardProps {
@@ -18,6 +19,8 @@ export function CoffeeCard({ id, title, subtitle, tags, price }: CoffeeCardProps
     const { insertItemToCart } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(0);
+
+    const formattedPrice = formatPrice(price / 100);
 
     function handleAddOneQuantity() {
         setQuantity(quantity + 1);
@@ -57,7 +60,7 @@ export function CoffeeCard({ id, title, subtitle, tags, price }: CoffeeCardProps
             </CoffeeTitle>
 
             <FooterContainer>
-                <span>R$ <strong>{price}</strong></span>
+                <span>R$ <strong>{formattedPrice}</strong></span>
 
                 <FormCart>
                     <Quantity>

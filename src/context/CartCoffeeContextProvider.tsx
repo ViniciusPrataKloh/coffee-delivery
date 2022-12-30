@@ -54,14 +54,15 @@ export function CartCoffeeContextProvider({ children }: CartCoffeeContextProvide
         dispatch(changeCoffeeQuantityAction(coffee, quantity))
     }
 
+    function clearCart() {
+        dispatch(clearCartAction());
+    }
+
     function getSelectedCoffeeById(coffeeId: string): Coffee {
         const coffee = coffees.find(coffee => coffee.id === coffeeId);
         return coffee!;
     }
 
-    function clearCart() {
-        dispatch(clearCartAction());
-    }
 
     console.log(cartItemsState);
 

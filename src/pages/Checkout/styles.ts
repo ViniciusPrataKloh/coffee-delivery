@@ -103,6 +103,11 @@ export const RightCard = styled.div`
             font-size: 20px;
             line-height: 130%;
         }
+    }
+    
+    .btn{
+        display: flex;
+        align-items: center;
 
         button{
             display: flex;
@@ -111,6 +116,7 @@ export const RightCard = styled.div`
             margin-top: 24px;
             padding: 12px 117px;
             border-radius: 6px;
+            text-decoration: underline;
 
             background-color: ${(props) => props.theme['yellow-300']};
             color:${(props) => props.theme['gray-100']};

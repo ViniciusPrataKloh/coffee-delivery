@@ -1,15 +1,17 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import illustration from '../../assets/illustration.png'
-import { CartContext } from '../../context/CartCoffeeProvider'
+import { CartContext } from '../../context/CartCoffeeContextProvider'
 import { FormContext } from '../../context/FormLocationContextProvider'
+import { PaymentContext } from '../../context/PaymentContextProvider'
 import { Box, GradientBorder, IconCircle, InformationCard, InformationContainer, Item, Wrapper } from './styles'
 
 export function Success() {
     const { location, number } = useContext(FormContext);
     const { clearCart } = useContext(CartContext);
+    const { paymentType } = useContext(PaymentContext);
 
-    // clearCart();
+    clearCart();
 
     return (
         <Wrapper>
@@ -50,7 +52,7 @@ export function Success() {
                             </IconCircle>
                             <div>
                                 <span>Pagamento na entrega</span>
-                                <strong>Cartão de Crédito</strong>
+                                <strong>{paymentType}</strong>
                             </div>
                         </Item>
                     </InformationCard>

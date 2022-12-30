@@ -1,7 +1,7 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
 import { CoffeeImage } from '../../../components/CoffeeImage';
-import { CartContext } from '../../../context/CartCoffeeProvider';
+import { CartContext } from '../../../context/CartCoffeeContextProvider';
 import { formatPrice } from '../../../utils/formatPrice';
 import { Quantity, SelectedCoffeeCardContainer } from './styled';
 

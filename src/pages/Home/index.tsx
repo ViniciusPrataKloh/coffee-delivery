@@ -1,7 +1,7 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import coffeeDelivery from '../../assets/coffee-delivery.png'
-import { CartContext } from '../../context/CartCoffeeProvider'
+import { CartContext } from '../../context/CartCoffeeContextProvider'
 import { CoffeeCard } from './CoffeeCard'
 import {
     CardContainer, Header, HeaderContainer, IconCircle,

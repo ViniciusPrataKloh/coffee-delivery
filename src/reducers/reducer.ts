@@ -1,12 +1,14 @@
-import { selectedCoffee } from "../context/CartCoffeeProvider";
+import { selectedCoffee } from "../context/CartCoffeeContextProvider";
 import { ActionTypesProps } from "./actions";
 
 export function CartStateReducer(state: selectedCoffee[], action: ActionTypesProps) {
+
     if (action.type == 'ADD_NEW_COFFEE') {
         const selectedCoffee: selectedCoffee = Object.assign({
             coffee: action.payload.coffee,
             quantity: action.payload.quantity
         });
+
         return [...state, selectedCoffee];
     }
 
@@ -25,6 +27,7 @@ export function CartStateReducer(state: selectedCoffee[], action: ActionTypesPro
                     coffee: action.payload.coffee,
                     quantity: action.payload.quantity
                 });
+
                 return updateCoffee;
             } else {
                 return item;

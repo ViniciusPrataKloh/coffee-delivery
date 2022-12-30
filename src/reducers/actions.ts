@@ -1,13 +1,9 @@
-import { Coffee } from "../context/CartCoffeeProvider";
+import { Coffee } from "../context/CartCoffeeContextProvider";
 
 export enum ActionTypes {
-    // eslint-disable-next-line no-unused-vars
     ADD_NEW_COFFEE = 'ADD_NEW_COFFEE',
-    // eslint-disable-next-line no-unused-vars
     REMOVE_COFFEE = 'REMOVE_COFFEE',
-    // eslint-disable-next-line no-unused-vars
     CHANGE_QUANTITY = 'CHANGE_QUANTITY',
-    // eslint-disable-next-line no-unused-vars
     CLEAR_CART = 'CLEAR_CART'
 }
 

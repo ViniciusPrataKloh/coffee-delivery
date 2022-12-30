@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const TypeCard = styled.button`
+export const TypeCardButton = styled.button`
     display: flex;
     flex-direction: row;
     align-items: center;
