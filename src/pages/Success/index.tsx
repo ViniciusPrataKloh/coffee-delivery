@@ -11,7 +11,7 @@ export function Success() {
     const { clearCart } = useContext(CartContext);
     const { paymentType } = useContext(PaymentContext);
 
-    clearCart();
+    // clearCart();
 
     return (
         <Wrapper>

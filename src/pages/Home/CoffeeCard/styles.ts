@@ -90,15 +90,16 @@ export const Quantity = styled.div`
     padding: 8px 12px;
     
     background-color: ${(props) => props.theme['gray-300']};
+    transition: .2s;
 
     button{
         color: ${(props) => props.theme['purple-300']};
         background-color: ${(props) => props.theme['gray-300']};
     
-        &::hover{
-            color: ${(props) => props.theme['purple-500']};
+        &:hover{
+            color: ${(props) => props.theme['gray-500']};
         }
-    }
+     }
 `
 
 export const CartButton = styled.button`
@@ -110,8 +111,9 @@ export const CartButton = styled.button`
 
     background: ${(props) => props.theme['purple-500']};
     color: ${(props) => props.theme['white']};
+    transition: .2s;
 
-    &::hover{
-        background: ${(props) => props.theme['yellow-300']};
+    &:hover{
+        background: ${(props) => props.theme['purple-300']};
     }
 `
