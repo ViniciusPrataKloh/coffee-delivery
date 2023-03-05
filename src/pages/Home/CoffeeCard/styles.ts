@@ -58,6 +58,8 @@ export const CoffeeTitle = styled.div`
     gap: 8px;
     margin-top: 32px;
     margin-bottom: 32px;
+
+    text-align: center;
 `
 
 export const FooterContainer = styled.footer`
